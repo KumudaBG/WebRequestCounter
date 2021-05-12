@@ -3,7 +3,7 @@ package main.java;
 import java.util.concurrent.atomic.LongAdder;
 
 public class WebRequestCounterImpl implements WebRequestCounter {
-	LongAdder counter = new LongAdder();
+	LongAdder counter;
 
 	@Override
 	public void increment() {
@@ -18,6 +18,10 @@ public class WebRequestCounterImpl implements WebRequestCounter {
 	@Override
 	public void flush() {
 		counter.reset();
+	}
+
+	public WebRequestCounterImpl() {
+		counter = new LongAdder();
 	}
 
 }
